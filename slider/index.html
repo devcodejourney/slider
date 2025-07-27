@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Slider -devcodejourney</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <style>
+        /* Custom slider container */
+        .slider-container {
+            max-width: 910px;
+            max-height: 400px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Swiper modifications */
+        .swiper {
+            width: 100%;
+            height: 100%;
+        }
+
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: transparent;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .swiper-slide a {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        .wrapper {
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .wrapper img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Custom controls */
+        .slider-controls {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            z-index: 10;
+            display: flex;
+            background: rgba(30, 30, 40, 0.35);
+            border-radius: 8px 0 8px 0;
+            backdrop-filter: blur(10px) saturate(180%);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .slider-controls button {
+            width: 40px;
+            height: 40px;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .swiper-pagination-bullet {
+            background: #009688;
+            opacity: 0.3;
+            width: 5px;
+            height: 5px;
+            transition: all 0.3s;
+        }
+
+        .swiper-pagination-bullet-active {
+            opacity: 1;
+            background: #009688;
+            scale: 2;
+            box-shadow: 0 2px 8px rgba(0, 188, 212, 0.25);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 910px) {
+            .slider-container {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Slider section - body remains unstyled -->
+    <section class="slider-container">
+        <div class="swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="wrapper">
+                        <a href="#">
+                            <img src="https://picsum.photos/910/400?random=1" alt="Slide 1">
+                        </a>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="wrapper">
+                        <a href="#">
+                            <img src="https://picsum.photos/910/400?random=2" alt="Slide 1">
+                        </a>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="wrapper">
+                        <a href="#">
+                            <img src="https://picsum.photos/910/400?random=3" alt="Slide 1">
+                        </a>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="wrapper">
+                        <a href="#">
+                            <img src="https://picsum.photos/910/400?random=4" alt="Slide 1">
+                        </a>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="wrapper">
+                        <a href="#">
+                            <img src="https://picsum.photos/910/400?random=5" alt="Slide 1">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Pagination -->
+            <div class="swiper-pagination"></div>
+
+            <!-- Custom controls -->
+            <div class="slider-controls">
+                <button class="play-pause">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="6" y="4" width="4" height="16" fill="white"></rect>
+                        <rect x="14" y="4" width="4" height="16" fill="white"></rect>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Initialize Swiper
+            const swiper = new Swiper('.swiper', {
+                loop: true,
+                autoplay: {
+                    delay: 3000,
+                    disableOnInteraction: false,
+                },
+
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+            });
+
+            // Play/Pause button functionality
+            const playPauseBtn = $('.play-pause');
+            let isPlaying = true;
+
+            playPauseBtn.on('click', function () {
+                if (isPlaying) {
+                    swiper.autoplay.stop();
+                    playPauseBtn.html('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3" fill="white"></polygon></svg>');
+                } else {
+                    swiper.autoplay.start();
+                    playPauseBtn.html('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="4" width="4" height="16" fill="white"></rect><rect x="14" y="4" width="4" height="16" fill="white"></rect></svg>');
+                }
+                isPlaying = !isPlaying;
+            });
+        });
+    </script>
+</body>
+
+</html>

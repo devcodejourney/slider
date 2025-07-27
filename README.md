@@ -5,7 +5,7 @@
 
 
 
-Thanks  
+Thanks 💗
 DevCode Journey <br>
 Get free code: 👇
 

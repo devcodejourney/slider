@@ -3,8 +3,6 @@
 # All the code is kept inside a single HTML file to make things easier for beginners. This way, they won’t face any issues while trying to run or understand the project.
 # Advanced users, however, are welcome to refactor the code and structure it in their preferred way for better organization or scalability.
 
-
-
 Thanks  
 DevCode Journey <br>
 Get free code: 👇
